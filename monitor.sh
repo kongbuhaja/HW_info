@@ -174,6 +174,7 @@ print_gpu_info() {
     local p=$((power_length/2))
     local m=$((memory_length/2))
     echo "$gpu_info" | while IFS=',' read -r index name temperature power_draw power_limit memory_used memory_total utilization
+    name=${name:0:25}
     do
         if [ "${temperature%.*}" -ge 65 ]; then
             local temp_color=$RED
@@ -187,7 +188,7 @@ print_gpu_info() {
 
         local d=$(((25-${#name})/2))
         printf "${BLUE}‖${GREEN}%2s${NC} %"$((25-d))"s%"$d"s|${temp_color}%7s${NC}|%"$p"s%-"$((power_length-p))"s|%"$m"s%-"$((memory_length-m))"s|%8s${BLUE}‖\n" \
-         "$index" "${name:0:25}" '' "${temperature:1}°C " "${power_draw:1:-3}/" "${power_limit:1:-3}W" "${memory_used:1}/" "${memory_total:1}Mb" "${utilization:1}%  "
+         "$index" "$name" '' "${temperature:1}°C " "${power_draw:1:-3}/" "${power_limit:1:-3}W" "${memory_used:1}/" "${memory_total:1}Mb" "${utilization:1}%  "
     done
     printf "${NC}"
 }
