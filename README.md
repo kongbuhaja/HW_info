@@ -1,6 +1,9 @@
 # Hardware monitoring program  
 You can monitor your CPU, GPU, Memory  
-requirement: sysstat, lm-sensors
+
+## requirement  
+- [x] sysstat
+- [x] lm-sensors
   
 ## Hardware  
 - [x] CPU 
