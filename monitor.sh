@@ -176,7 +176,7 @@ print_gpu_info() {
     echo "$gpu_info" | while IFS=',' read -r index name temperature power_draw power_limit memory_used memory_total utilization
     
     do
-        short_name="${name:0:25]"
+        short_name="${name:0:25}"
         if [ "${temperature%.*}" -ge 65 ]; then
             local temp_color=$RED
         elif [ "${temperature%.*}" -ge 50 ]; then
